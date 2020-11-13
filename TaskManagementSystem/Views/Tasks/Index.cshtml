@@ -1,0 +1,15 @@
+﻿@using TaskManagementSystem.Enums
+<h1>Create Task</h1>
+
+<form action="/Tasks/Create" method="post">
+    <input type="text" name="Title" placeholder="Title" value="" />
+    <br />
+    <textarea type="text" name="Description" placeholder="Description"></textarea>
+    <br />
+    <select asp-items="Html.GetEnumSelectList<TaskPriority>()">
+        <option selected>Select task Status</option>
+    </select>
+    <br />
+    <br />
+    <button class="btn btn-success" type="submit">Create</button>
+</form>

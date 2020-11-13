@@ -1,0 +1,43 @@
+﻿<script src="~/js/CustomJs.js"></script>
+@model IEnumerable<TaskManagementSystem.Entities.Task>
+@using TaskManagementSystem.Enums
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@if (User.IsInRole("Create"))
+{
+    <button class="btn btn-success" onclick="location.href='@Url.Action("Index","Tasks")'">Create</button>
+}
+
+<br />
+<br />
+<div class="col-md-9">
+    <div class="row-fluid ">
+        @foreach (var task in Model)
+        {
+            <div class="card" style="width: 18rem">
+                <div class="card-body">
+                    <h5 class="card-title">Title: @task.Title</h5>
+                    <p class="card-text">Description: @task.Description</p>
+                    <h6 class="card-text">Priority: @task.Priority</h6>
+                    @if (User.IsInRole("Edit"))
+                    {
+                        <select  asp-for="@task.Status"  asp-items="Html.GetEnumSelectList<TasksStatus>()"  onchange="changeTaskStatus(@task.Id, this.value)">
+                          <option value="">------</option>
+                        </select>                       
+                    }
+                    else
+                    {
+                        <h6 class="card-text">Status: @task.Status</h6>
+                    }
+
+                </div>
+            </div>
+            
+        }
+    </div>
+    
+</div>
