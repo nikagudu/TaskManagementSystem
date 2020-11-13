@@ -29,7 +29,7 @@ namespace TaskManagementSystem.DB
                 new Entities.Task{Title= "Task3", Description="Task1 Description", DateCreated = DateTime.Now, Priority = Enums.TaskPriority.High, Status = Enums.TasksStatus.Done},
                 new Entities.Task{Title= "Task4", Description="Task4 Description", DateCreated = DateTime.Now, Priority = Enums.TaskPriority.Low, Status = Enums.TasksStatus.New},
                 new Entities.Task{Title= "Task5", Description="Task5 Description", DateCreated = DateTime.Now, Priority = Enums.TaskPriority.Medium, Status = Enums.TasksStatus.InProgress},
-                new Entities.Task{Title= "Task6", Description="Task6 Description", DateCreated = DateTime.Now, Priority = Enums.TaskPriority.High },
+                new Entities.Task{Title= "Task6", Description="Task6 Description", DateCreated = DateTime.Now, Priority = Enums.TaskPriority.High }
 
             };
 
@@ -74,8 +74,8 @@ namespace TaskManagementSystem.DB
 
             //password for both users
             string password = "Tbilisi123!";
-            var _user = await UserManager.FindByNameAsync(user.UserName);
 
+            var _user = await UserManager.FindByNameAsync(user.UserName);
             if (_user == null)
             {
                 var createUser = await UserManager.CreateAsync(user, password);

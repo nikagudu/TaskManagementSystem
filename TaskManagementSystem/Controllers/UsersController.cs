@@ -33,7 +33,6 @@ namespace TaskManagementSystem.Controllers
         [HttpPost]      
         public async Task<IActionResult> LogIn(string username, string password)
         {
-            
             try
             {
                 var signInResult = await _signInManager.PasswordSignInAsync(username, password, false, false);
@@ -51,10 +50,8 @@ namespace TaskManagementSystem.Controllers
             {
 
                 return BadRequest(ex);
-            }
-            
+            }            
         }
-
        
         public async Task<IActionResult> LogOut()
         {

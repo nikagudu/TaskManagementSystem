@@ -33,8 +33,8 @@ namespace TaskManagementSystem.Services
 
         public virtual async Task CreateTask(Entities.Task Task)
         {
-
-            var res =  await _context.Tasks.AddAsync(Task);           
+            Task.DateCreated = DateTime.Now;
+             await _context.Tasks.AddAsync(Task);           
             _context.SaveChanges();
         }
 
